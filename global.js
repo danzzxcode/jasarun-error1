@@ -1,0 +1,23 @@
+require('./settings')
+require('./lib/database')
+require('./lib/data')
+require('./lib/antispam')
+require('./lib/blockcmd')
+require('./lib/banned')
+require('./lib/game')
+require('./lib/totalerror')
+require('./lib/totalcmd')
+require('./lib/user') 
+require('./lib/menfes') 
+require('./message/help')
+require('./message/stickerPack.js')
+require('./message/message.js')
+require('./message/vn')
+//================================================================================\\
+let file = require.resolve(__filename)
+fs.watchFile(file, () => {
+	fs.unwatchFile(file)
+	console.log(chalk.redBright(`Update ${__filename}`))
+	delete require.cache[file]
+	require(file)
+})
